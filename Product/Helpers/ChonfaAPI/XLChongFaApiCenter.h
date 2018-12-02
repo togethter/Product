@@ -1,0 +1,16 @@
+//
+//  XLChongFaApiCenter.h
+//  chongfa
+//
+//  Created by bilin on 2017/12/19.
+//  Copyright © 2017年 Bilin-Apple. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "ChongFaApiModelProtocol.h"
+#import "ChongFaApiProtocol.h"
+@interface XLChongFaApiCenter : NSObject
+
++ (void)chongFaApiCenterAction:(EchongFaToDo)chongfaTodo onResponde:(id <ChongFaApiModelProtocol>)responde withDelegate:(XLAppDelegate *)delegate;
+
+@end

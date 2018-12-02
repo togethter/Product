@@ -1,0 +1,249 @@
+//
+//  XLChongfaApiImplementaionOne.m
+//  chongfa
+//
+//  Created by bilin on 2017/12/19.
+//  Copyright © 2017年 Bilin-Apple. All rights reserved.
+//
+
+#import "XLChongfaApiImplementaionOne.h"
+#import "XLThirdPartyLoginViewController.h"// 第三方登录
+#import "BXTabBarController.h"// 用户端
+#import "LawyerBXTabBarController.h"// 律师端
+#import "NnwLawyerCertificationViewController.h"// 律师认证的东西
+@implementation XLChongfaApiImplementaionOne
+
+//
+//+ (void)XLChongfaApiImplementationEchongFaTypeLoginonResponde:(id <ChongFaApiModelProtocol>)responde withAppDelegate:(AppDelegate *)delegate
+//{
+//    if ([self islogin]) {// 登录了
+//        XLThirdPartyLoginViewController *loginVC = [[XLThirdPartyLoginViewController alloc] init];
+//        loginVC.xlChongfaApiModel = responde;
+//        UITabBarController *tabBarVC = (UITabBarController *)delegate.window.rootViewController;
+//        if ([tabBarVC isKindOfClass:[BXTabBarController class]]) {// 如果是用户的tabBar
+//            NSInteger index = [responde chonfaApibarindex];
+//            UINavigationController *navc =   [((BXTabBarController *)tabBarVC) xlcustomNavigationBarIndex:index];
+//            [navc pushViewController:loginVC animated:NO];
+//
+//        } else if ([tabBarVC isKindOfClass:[LawyerBXTabBarController class]]) {// 若果是律师的tabBar
+//            tabBarVC.selectedIndex = tabBarVC.childViewControllers.count - 1;
+//            NSInteger index = [responde chongfaApilawyerindex];
+//            UINavigationController *navc = ((UITabBarController *)delegate.window.rootViewController).childViewControllers[index];
+//            [navc pushViewController:loginVC animated:NO];
+//        }
+//    } else {// 没有登录
+//        UINavigationController *viewController = (UINavigationController *)delegate.window.rootViewController;
+//        if (viewController &&[viewController isKindOfClass:[UINavigationController class]]) {
+//            UIViewController *vc = viewController.topViewController;
+//            if ([vc respondsToSelector:@selector(setXlChongfaApiModel:)]) {
+//                [vc performSelector:@selector(setXlChongfaApiModel:) withObject:responde];
+//            }
+//
+//        } else {
+//
+//            if ([viewController respondsToSelector:@selector(setXlChongfaApiModel:)]) {
+//                [viewController performSelector:@selector(setXlChongfaApiModel:) withObject:responde];
+//            }
+//        }
+//
+//    }
+//
+//}
+//
+//
+//+ (void)XLChongfaApiImplementationEchongFaTypeCertificationResponde:(id <ChongFaApiModelProtocol>)responde withAppDelegate:(AppDelegate *)delegate
+//{
+//
+//    if ([self islogin]) {// 登录了
+//        if ([USERTYPE isEqualToString:@"1"]) {// 用户
+//            // 如果是用户端的就去认证
+//            BXTabBarController *tabBarVC =   (BXTabBarController *)delegate.window.rootViewController;
+//            NSInteger index = [responde chonfaApibarindex];
+//            UINavigationController *naVC = [tabBarVC xlcustomNavigationBarIndex:index];
+//            NnwLawyerCertificationViewController *nnwVC = [[NnwLawyerCertificationViewController alloc] init];
+//            nnwVC.isStayInChongFa = YES;
+//            [naVC pushViewController:nnwVC animated:YES];
+//        } else if ([USERTYPE isEqualToString:@"2"]) {// 律师
+//            // 如果是律师端的话就 跳进来就好了
+//            NSString *xllawyervc= [responde chongfaApilawyervc];// 律师端的VC
+//            if (IS_VALID_STRING(xllawyervc)) {
+//               Class lawyerVc = NSClassFromString(xllawyervc);
+//                UIViewController *vc = [[lawyerVc alloc] init];
+//                NSInteger index = [responde chongfaApilawyerindex];
+//               UINavigationController *navc = ((UITabBarController *)delegate.window.rootViewController).childViewControllers[index];
+//                [navc pushViewController:vc animated:YES];
+//            }
+//
+//        }
+//    } else {// 没有登录
+//        // 看我们进的是哪一个界面
+//
+//        // if  引导页
+//        // 引导页 -登录页 - 登录 - //
+//        // 引导页 -登录页 - 注册 - //
+//        // 登录页 - 注册          //
+//        // 登录页 - 登录          //
+//
+//
+//        UINavigationController *viewController = (UINavigationController *)delegate.window.rootViewController;
+//        if (viewController &&[viewController isKindOfClass:[UINavigationController class]]) {
+//            UIViewController *vc = viewController.topViewController;
+//            if ([vc respondsToSelector:@selector(setXlChongfaApiModel:)]) {
+//                [vc performSelector:@selector(setXlChongfaApiModel:) withObject:responde];
+//            }
+//
+//        } else {
+//            if ([viewController respondsToSelector:@selector(setXlChongfaApiModel:)]) {
+//                [viewController performSelector:@selector(setXlChongfaApiModel:) withObject:responde];
+//            }
+//
+//        }
+//
+//
+//
+//    }
+//
+//
+//}
+//
+//
+//+ (void)XLChongfaApiImplementationEchongFaTypePickUpCaseResponde:(id <ChongFaApiModelProtocol>)responde withAppDelegate:(AppDelegate *)delegate
+//{
+//#pragma mark --- 携带的参数没有写临时写的是空值 -- @“”
+//    NSDictionary *parameter = [responde chongfaApiExtensionParameters];
+//    NSString *caseId = parameter[@"caseId"];// 案件的id
+//    if ([self islogin]) {// 登录的
+//        if ([USERTYPE isEqualToString:@"2"]) {// 如果是律师的话
+//            LawyerBXTabBarController *tabBarVC = (LawyerBXTabBarController *)delegate.window.rootViewController;
+//            Class xlClass = NSClassFromString([responde chongfaApilawyervc]);
+//            NSInteger index = [responde chongfaApilawyerindex];
+//            UIViewController *xlClasVC = [[xlClass alloc] init];
+//
+//
+//            tabBarVC.selectedIndex = index;
+//            UINavigationController *navc = tabBarVC.childViewControllers[index];
+//            [navc pushViewController:xlClasVC animated:YES];
+//        } else if ([USERTYPE isEqualToString:@"1"]) {// 如果是用户的话 跳到律师认证页面里面
+//
+//            BXTabBarController *tabBarVC =   (BXTabBarController *)delegate.window.rootViewController;
+//            UINavigationController *naVC = [tabBarVC xllastNaBar];
+//            NnwLawyerCertificationViewController *nnwVC = [[NnwLawyerCertificationViewController alloc] init];
+//            nnwVC.isStayInChongFa = YES;
+//            [naVC pushViewController:nnwVC animated:YES];
+//
+//        }
+//    } else {// 没有登录
+//        UINavigationController *viewController = (UINavigationController *)delegate.window.rootViewController;
+//        if (viewController &&[viewController isKindOfClass:[UINavigationController class]]) {
+//            UIViewController *vc = viewController.topViewController;
+//            if ([vc respondsToSelector:@selector(setXlChongfaApiModel:)]) {
+//                [vc performSelector:@selector(setXlChongfaApiModel:) withObject:responde];
+//            }
+//
+//        } else {
+//
+//            if ([viewController respondsToSelector:@selector(setXlChongfaApiModel:)]) {
+//                [viewController performSelector:@selector(setXlChongfaApiModel:) withObject:responde];
+//            }
+//        }
+//    }
+//}
+
++ (void)XLChongfaApiImplementationEchongFaTypeOtherOperationResponde:(id<ChongFaApiModelProtocol>)responde withAppDelegate:(AppDelegate *)delegate
+{
+    if ([self islogin]) {// 登录了
+        if ([USERTYPE isEqualToString:@"1"]) {// 用户
+            // 如果是用户端的就去认证
+            BXTabBarController *tabBarVC =   (BXTabBarController *)delegate.window.rootViewController;
+            NSInteger index = [responde chonfaApibarindex];
+            UINavigationController *navc = nil;
+            if (tabBarVC.childViewControllers.count > index) {
+                navc =   [tabBarVC  xlcustomNavigationBarIndex:index];
+            }
+            Class xlClass = NSClassFromString([responde chongfaApiVC]);
+            UIViewController *xlClasVC = [[xlClass alloc] init];
+            if ([xlClasVC respondsToSelector:@selector(setXlChongfaApiModel:)]) {
+                [xlClasVC performSelector:@selector(setXlChongfaApiModel:) withObject:responde];
+                //配置网络请求的参数等
+                [self configurateTheViewControllerParametersWithResponde:responde withVC:xlClasVC];
+            }
+            if (xlClasVC) {
+                [navc pushViewController:xlClasVC animated:YES];
+            }
+            
+            
+        } else if ([USERTYPE isEqualToString:@"2"]) {// 律师
+            // 如果是律师端的话就 跳进来就好了
+            LawyerBXTabBarController *tabBarVC = (LawyerBXTabBarController *)delegate.window.rootViewController;
+            Class xlClass = NSClassFromString([responde chongfaApilawyervc]);
+            NSInteger index = [responde chongfaApilawyerindex];
+            UIViewController *xlClasVC = [[xlClass alloc] init];
+            UINavigationController *navc = nil;
+            if ([xlClasVC respondsToSelector:@selector(setXlChongfaApiModel:)]) {
+                [xlClasVC performSelector:@selector(setXlChongfaApiModel:) withObject:responde];
+                // 配置网络请求的参数
+                [self configurateTheViewControllerParametersWithResponde:responde withVC:xlClasVC];
+
+            }
+            if (tabBarVC.childViewControllers.count > index) {
+                tabBarVC.selectedIndex = index;
+                navc                   = tabBarVC.childViewControllers[index];
+                
+            }
+            if (xlClasVC) {
+                [navc pushViewController:xlClasVC animated:YES];
+            }
+            
+        }
+    } else {// 没有登录
+        // 看我们进的是哪一个界面
+        
+        // if  引导页
+        // 引导页 -登录页 - 登录 - //                                                                                                                                                                                                                                                                                                                                                                                                                                       
+        // 引导页 -登录页 - 注册 - //
+        // 登录页 - 注册          //
+        // 登录页 - 登录          //
+        
+        
+        UINavigationController *viewController = (UINavigationController *)delegate.window.rootViewController;
+        if (viewController &&[viewController isKindOfClass:[UINavigationController class]]) {
+            UIViewController *vc = viewController.topViewController;
+            if ([vc respondsToSelector:@selector(setXlChongfaApiModel:)]) {
+                [vc performSelector:@selector(setXlChongfaApiModel:) withObject:responde];
+            }
+           
+        } else {
+            
+            if ([viewController respondsToSelector:@selector(setXlChongfaApiModel:)]) {
+                [viewController performSelector:@selector(setXlChongfaApiModel:) withObject:responde];
+            }
+        }
+        
+        
+        
+    }
+}
+/**
+ 崇法是否登录
+
+ @return YES 代表登录 NO  代表没有登录
+ */
++ (BOOL)islogin
+{
+    LoginUserModel *model =  UserManager.sharedManager.userModel;
+    return model ? YES : NO;
+   
+}
+
+/**
+ 是否显示引导页
+
+ @return YES 显示引导页 NO  不显示引导页
+ */
++ (BOOL)isDisplayGuidePage
+{
+    BOOL isdisplayGuidePage = UserManager.sharedManager.isDisplayGuidePage;
+    return isdisplayGuidePage;
+}
+
+@end
