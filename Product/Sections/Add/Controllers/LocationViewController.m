@@ -32,14 +32,14 @@
     DateViewController *vc7 = [[DateViewController alloc] init];
     DateViewController *vc8 = [[DateViewController alloc] init];
 
-    [scrol addChilder:vc1 title:@"逗比"];
+    [scrol addChilder:vc1 title:@"逗比比"];
     [scrol addChilder:vc2 title:@"逗比"];
     [scrol addChilder:vc3 title:@"逗比"];
     [scrol addChilder:vc4 title:@"逗比"];
-    [scrol addChilder:vc5 title:@"逗比"];
+    [scrol addChilder:vc5 title:@"比比比比"];
     [scrol addChilder:vc6 title:@"逗比"];
     [scrol addChilder:vc7 title:@"逗比"];
-    [scrol addChilder:vc8 title:@"逗比"];
+    [scrol addChilder:vc8 title:@"逗比比比比比比比比比"];
 
     [scrol show];
     return;

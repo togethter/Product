@@ -191,6 +191,7 @@
         [self.oldBtn setTitleColor:self.confi.normalTitleColor forState:UIControlStateNormal];
         UIButton *newBtn = self.oldBtnArray[index];
         [newBtn setTitleColor:self.confi.selctTitleColor forState:UIControlStateNormal];
+        [self changCenter:newBtn];
     } else {
         [self.oldBtn setTitleColor:self.confi.selctTitleColor forState:UIControlStateNormal];
     }
@@ -198,15 +199,26 @@
         vc.view.frame = CGRectMake(index * CGRectGetWidth(self.contentScrollow.frame), 0, CGRectGetWidth(self.contentScrollow.frame),  CGRectGetHeight(self.contentScrollow.frame));
         [self.contentScrollow addSubview:vc.view];
     }
-    [self convernFrameWithScrollow:scrollow];
+    
+    
     self.oldBtn = self.oldBtnArray[index];
 }
 
 
-- (void)convernFrameWithScrollow:(UIScrollView *)scrollow {
-
-    
-    
-    
+- (void)changCenter:(UIButton *)sender {
+    CGFloat offset = sender.center.x - CGRectGetWidth(self.contentView.frame) * 0.5;
+    // 如果在屏幕中心的左边
+    if (offset < 0) {
+        // 不做偏移
+        offset = 0;
+    }
+    // 标签ScrollView的偏移量打到最右时
+    CGFloat maxOffset = self.titleScrollow.contentSize.width - CGRectGetWidth(self.contentView.frame);
+    // 如果这个偏移量大于最大
+    if (offset > maxOffset && maxOffset >0) {
+        // 设置为最大
+        offset = maxOffset;
+    }
+    [self.titleScrollow setContentOffset:CGPointMake(offset, 0) animated:YES];
 }
 @end
