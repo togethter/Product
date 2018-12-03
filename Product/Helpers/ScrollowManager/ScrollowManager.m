@@ -54,8 +54,8 @@
     
 }
 
-- (instancetype (^)(UIView *contentView ,UIViewController *parentViewController))parentViewController; {
-    return ^ScrollowManager * (UIView *contentView,UIViewController *parentViewController) {
+- (instancetype (^)(UIView *contentView ,UIViewController *parentViewController, ScrollowConfig *config))parentViewController {
+    return ^ScrollowManager * (UIView *contentView,UIViewController *parentViewController, ScrollowConfig *config) {
         ScrollowManager *view = [[ScrollowManager alloc] initWithFrame:contentView.bounds];
         [contentView addSubview:view];
         view.parentVC = parentViewController;
@@ -177,7 +177,28 @@
 }
 - (void)senderBtn:(UIButton *)sender {
     NSInteger index = sender.tag - 1000;
-    [self.contentScrollow setContentOffset:CGPointMake(index *CGRectGetWidth(self.contentScrollow.frame), 0) animated:YES];
+    [self.contentScrollow setContentOffset:CGPointMake(index *CGRectGetWidth(self.contentScrollow.frame), 0) animated:NO];
+    if (self.parentVC.childViewControllers.count < index)return;
+    UIViewController *vc = self.parentVC.childViewControllers[index];
+    if (![self.contentScrollow.subviews containsObject:vc.view]) {
+        vc.view.frame = CGRectMake(index * CGRectGetWidth(self.contentScrollow.frame), 0, CGRectGetWidth(self.contentScrollow.frame),  CGRectGetHeight(self.contentScrollow.frame));
+        [self.contentScrollow addSubview:vc.view];
+    }
+    if (self.oldBtn != sender) {
+        [self.oldBtn setTitleColor:self.confi.normalTitleColor forState:UIControlStateNormal];
+        [sender setTitleColor:self.confi.selctTitleColor forState:UIControlStateNormal];
+        [self changCenter:sender];
+    } else {
+        [self.oldBtn setTitleColor:self.confi.selctTitleColor forState:UIControlStateNormal];
+    }
+    CGPoint lineViewCenter = self.lineView.center;
+    lineViewCenter.x  = sender.center.x;
+    __weak typeof(self)weakself = self;
+    [UIView animateWithDuration:0.25 animations:^{
+        weakself.lineView.center = lineViewCenter;
+    }];
+    self.oldBtn = sender;
+    
 }
 
 
@@ -199,9 +220,7 @@
         vc.view.frame = CGRectMake(index * CGRectGetWidth(self.contentScrollow.frame), 0, CGRectGetWidth(self.contentScrollow.frame),  CGRectGetHeight(self.contentScrollow.frame));
         [self.contentScrollow addSubview:vc.view];
     }
-    
-    
-    self.oldBtn = self.oldBtnArray[index];
+        self.oldBtn = self.oldBtnArray[index];
 }
 
 

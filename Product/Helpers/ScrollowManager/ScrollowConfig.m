@@ -14,8 +14,8 @@
     if (!self) {
         return nil;
     }
-    self.leftRightMargin = 20.f;
-    self.margin = 30.f;
+    self.leftRightMargin = 15.f;
+    self.margin = 15.f;
     self.titleScrollowH = 45.f;
     self.normalTitleColor = [UIColor darkGrayColor];
     self.selctTitleColor = [UIColor redColor];
