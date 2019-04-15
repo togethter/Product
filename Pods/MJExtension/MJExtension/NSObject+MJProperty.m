@@ -166,8 +166,8 @@ static const char MJCachedPropertiesKey = '\0';
                 for (unsigned int i = 0; i<outCount; i++) {
                     MJProperty *property = [MJProperty cachedPropertyWithProperty:properties[i]];
                     // 过滤掉Foundation框架类里面的属性
-                    if ([MJFoundation isClassFromFoundation:property.srcClass]) continue;
-                    property.srcClass = c;
+                    if ([MJFoundation isClassFromFoundation:property.srcClass]) continue;// 过滤系统对象
+                    property.srcClass = c;// 属性来源类
                     [property setOriginKey:[self propertyKey:property.name] forClass:self];
                     [property setObjectClassInArray:[self propertyObjectClassInArray:property.name] forClass:self];
                     [cachedProperties addObject:property];

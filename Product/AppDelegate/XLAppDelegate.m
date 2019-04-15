@@ -10,6 +10,7 @@
 #import "DateViewController.h"
 #import "LocationViewController.h"
 #import "ConcreteProxy.h"
+#import "MJExtensionViewController.h"
 @implementation XLAppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -28,7 +29,7 @@
     
     [proxy helloWorld];
     [proxy goodBye];
-    LocationViewController *VC = [[LocationViewController alloc] init];
+    MJExtensionViewController *VC = [[MJExtensionViewController alloc] init];
     UINavigationController *navc = [[UINavigationController alloc] initWithRootViewController:VC];
     self.window.rootViewController = navc;
     return YES;

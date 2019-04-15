@@ -7,5 +7,5 @@ target 'Product' do
 
   # Pods for Product
 pod 'MJExtension', '~> 3.0.15.1'
-
+pod 'AFNetworking', '~> 3.2.1'
 end

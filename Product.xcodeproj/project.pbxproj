@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A9A36892260765100D58920 /* MJExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A36882260765100D58920 /* MJExtensionViewController.m */; };
+		4A9A368C2260767100D58920 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A368B2260767100D58920 /* User.m */; };
 		C52093CE21B029CB007F978E /* ScrollowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C52093CD21B029CB007F978E /* ScrollowManager.m */; };
 		C52CFCB721B2949E000D6733 /* ScrollowConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C52CFCB621B2949E000D6733 /* ScrollowConfig.m */; };
 		C5423B79217C7D4800B178D6 /* CityAndLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5423B75217C7D4800B178D6 /* CityAndLocationManager.m */; };
@@ -104,6 +106,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A9A36872260765100D58920 /* MJExtensionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJExtensionViewController.h; sourceTree = "<group>"; };
+		4A9A36882260765100D58920 /* MJExtensionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJExtensionViewController.m; sourceTree = "<group>"; };
+		4A9A368A2260767100D58920 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		4A9A368B2260767100D58920 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		6491C1D4B6F386AA0E3E068B /* libPods-Product.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Product.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C496B489D2C2D2A24BC92472 /* Pods-Product.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Product.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Product/Pods-Product.debug.xcconfig"; sourceTree = "<group>"; };
 		C52093CC21B029CB007F978E /* ScrollowManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollowManager.h; sourceTree = "<group>"; };
@@ -560,6 +566,10 @@
 			children = (
 				C5829899217A252000E9EB56 /* DateViewController.h */,
 				C582989A217A252000E9EB56 /* DateViewController.m */,
+				4A9A36872260765100D58920 /* MJExtensionViewController.h */,
+				4A9A36882260765100D58920 /* MJExtensionViewController.m */,
+				4A9A368A2260767100D58920 /* User.h */,
+				4A9A368B2260767100D58920 /* User.m */,
 				C5C25D31217B668F00F6673A /* LocationViewController.h */,
 				C5C25D32217B668F00F6673A /* LocationViewController.m */,
 			);
@@ -1069,7 +1079,9 @@
 				C5D1CA692180C044002714CA /* ScaleAnimationView.m in Sources */,
 				C58298922179E7BC00E9EB56 /* UIButton+XLExtension.m in Sources */,
 				C5423B86217C7FCE00B178D6 /* LoginUserModel.m in Sources */,
+				4A9A36892260765100D58920 /* MJExtensionViewController.m in Sources */,
 				C5F74B1D2185DBB100A19124 /* ConcreteProxy.m in Sources */,
+				4A9A368C2260767100D58920 /* User.m in Sources */,
 				C582989B217A252000E9EB56 /* DateViewController.m in Sources */,
 				C5D1CA852180CA1F002714CA /* Model.m in Sources */,
 				C5423BC4217C853400B178D6 /* NSMutableString+AvoidCrash.m in Sources */,

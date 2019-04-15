@@ -10,12 +10,7 @@
 
 @implementation BaseModel
 - (void)setValue:(id)value forKey:(NSString *)key {
-    if ([value isKindOfClass:[NSNumber class]]) {
-        [self setValue:[NSString stringWithFormat:@"%@",value] forKey:key];
-    } else {
-        [super setValue:value forKey:key];
-    }
-    
+    [super setValue:value forKey:key];
 }
 
 - (void)setNilValueForKey:(NSString *)key
