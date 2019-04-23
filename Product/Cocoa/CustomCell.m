@@ -19,7 +19,7 @@
 }
 
 - (void)setupCell {
-    
+
 }
 
 - (void)buildSubView {

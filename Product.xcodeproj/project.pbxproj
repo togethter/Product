@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A4F5BF7226DA2EA00F667E1 /* Pets.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4F5BF6226DA2EA00F667E1 /* Pets.m */; };
+		4A4F5BFA226DA4DA00F667E1 /* WorkPricence.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4F5BF9226DA4DA00F667E1 /* WorkPricence.m */; };
 		4A9A36892260765100D58920 /* MJExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A36882260765100D58920 /* MJExtensionViewController.m */; };
 		4A9A368C2260767100D58920 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A368B2260767100D58920 /* User.m */; };
+		4AFB3FC12269D23500F0007C /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFB3FC02269D23500F0007C /* NSString+Extension.m */; };
 		C52093CE21B029CB007F978E /* ScrollowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C52093CD21B029CB007F978E /* ScrollowManager.m */; };
 		C52CFCB721B2949E000D6733 /* ScrollowConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C52CFCB621B2949E000D6733 /* ScrollowConfig.m */; };
 		C5423B79217C7D4800B178D6 /* CityAndLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5423B75217C7D4800B178D6 /* CityAndLocationManager.m */; };
@@ -106,10 +109,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A4F5BF5226DA2EA00F667E1 /* Pets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pets.h; sourceTree = "<group>"; };
+		4A4F5BF6226DA2EA00F667E1 /* Pets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pets.m; sourceTree = "<group>"; };
+		4A4F5BF8226DA4DA00F667E1 /* WorkPricence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkPricence.h; sourceTree = "<group>"; };
+		4A4F5BF9226DA4DA00F667E1 /* WorkPricence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkPricence.m; sourceTree = "<group>"; };
 		4A9A36872260765100D58920 /* MJExtensionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJExtensionViewController.h; sourceTree = "<group>"; };
 		4A9A36882260765100D58920 /* MJExtensionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJExtensionViewController.m; sourceTree = "<group>"; };
 		4A9A368A2260767100D58920 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4A9A368B2260767100D58920 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		4AFB3FBF2269D23500F0007C /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		4AFB3FC02269D23500F0007C /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		6491C1D4B6F386AA0E3E068B /* libPods-Product.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Product.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C496B489D2C2D2A24BC92472 /* Pods-Product.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Product.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Product/Pods-Product.debug.xcconfig"; sourceTree = "<group>"; };
 		C52093CC21B029CB007F978E /* ScrollowManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollowManager.h; sourceTree = "<group>"; };
@@ -385,6 +394,8 @@
 			children = (
 				C5423B89217C816000B178D6 /* BaseModel.h */,
 				C5423B8A217C816000B178D6 /* BaseModel.m */,
+				4AFB3FBF2269D23500F0007C /* NSString+Extension.h */,
+				4AFB3FC02269D23500F0007C /* NSString+Extension.m */,
 			);
 			path = BaseModel;
 			sourceTree = "<group>";
@@ -570,6 +581,10 @@
 				4A9A36882260765100D58920 /* MJExtensionViewController.m */,
 				4A9A368A2260767100D58920 /* User.h */,
 				4A9A368B2260767100D58920 /* User.m */,
+				4A4F5BF5226DA2EA00F667E1 /* Pets.h */,
+				4A4F5BF6226DA2EA00F667E1 /* Pets.m */,
+				4A4F5BF8226DA4DA00F667E1 /* WorkPricence.h */,
+				4A4F5BF9226DA4DA00F667E1 /* WorkPricence.m */,
 				C5C25D31217B668F00F6673A /* LocationViewController.h */,
 				C5C25D32217B668F00F6673A /* LocationViewController.m */,
 			);
@@ -1061,12 +1076,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A4F5BFA226DA4DA00F667E1 /* WorkPricence.m in Sources */,
 				C5C25D22217B1B9600F6673A /* XLBaseTableHeaderView.m in Sources */,
 				C5D1CA722180C4DF002714CA /* BusinessCardAdapter.m in Sources */,
 				C5423B79217C7D4800B178D6 /* CityAndLocationManager.m in Sources */,
 				C5D1CA862180CA1F002714CA /* ModelAdapter.m in Sources */,
 				C58D0FCB218B21E10053450D /* Wheels.m in Sources */,
 				C58298882179E6EA00E9EB56 /* XLAppDelegate.m in Sources */,
+				4AFB3FC12269D23500F0007C /* NSString+Extension.m in Sources */,
 				C58D0FE5218B2CC00053450D /* Chess.m in Sources */,
 				C5F74B252185E9AD00A19124 /* MementoCenter.m in Sources */,
 				C5F74B162185D9F100A19124 /* AbastractProxy.m in Sources */,
@@ -1141,6 +1158,7 @@
 				C5C25D33217B668F00F6673A /* LocationViewController.m in Sources */,
 				C58D0FE9218B2DFF0053450D /* Node.m in Sources */,
 				C5F74B0B2185D66900A19124 /* Customer.m in Sources */,
+				4A4F5BF7226DA2EA00F667E1 /* Pets.m in Sources */,
 				C52CFCB721B2949E000D6733 /* ScrollowConfig.m in Sources */,
 				C5C25D2C217B21CD00F6673A /* LibiaryTableViewCell.m in Sources */,
 				C5423BC2217C853400B178D6 /* NSMutableAttributedString+AvoidCrash.m in Sources */,

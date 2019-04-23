@@ -6,21 +6,24 @@
 //  Copyright © 2019 李学良. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BaseModel.h"
+@class Pets,WorkPricence;
 typedef enum {
     SexMale,
     SexFemale
 } Sex;
 NS_ASSUME_NONNULL_BEGIN
 
-@interface User : NSObject
+@interface User : BaseModel
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *icon;
-@property (assign, nonatomic) unsigned int age;
-@property (copy, nonatomic) NSString *height;
+@property (assign, nonatomic) NSUInteger age;
+@property (assign, nonatomic) CGFloat height;
 @property (strong, nonatomic) NSNumber *money;
 @property (assign, nonatomic) Sex sex;
 @property (assign, nonatomic, getter=isGay) BOOL gay;
+@property (nonatomic, strong,nullable) Pets *pets;
+@property (nonatomic, strong, nullable) NSArray<WorkPricence *> *workPricenceArray;
 @end
 
 NS_ASSUME_NONNULL_END
