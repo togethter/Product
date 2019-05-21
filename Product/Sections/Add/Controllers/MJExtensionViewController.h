@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MJExtensionViewController : UIViewController
+@property (nonatomic, strong, null_resettable) NSProgress *sd_imageProgress;
 
 @end
 

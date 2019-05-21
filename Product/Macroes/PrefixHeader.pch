@@ -23,9 +23,14 @@
 #else
 #   define DLog(...)
 #endif
+#define LBXScan_Define_UI     //包含界面库
+#define LBXScan_Define_Native  //包含native库
+
 #import "ConstantHeader.h"
 #import "XLTableDataSourceHeader.h"
 #import "BaseModel.h"
 #import "LoginUserModel.h"
 #import "XLAppDelegate.h"
+#import "Masonry.h"
+#import <YYKeyboardManager.h>
 #endif /* PrefixHeader_pch */

@@ -76,7 +76,7 @@
 }
 
 - (NSUInteger)unsignedLongLongValue {
-  
+
   NSScanner *scan = [NSScanner scannerWithString:self];
   unsigned long long val;
   BOOL isScanSuccess = [scan scanUnsignedLongLong:&val] && [scan isAtEnd];

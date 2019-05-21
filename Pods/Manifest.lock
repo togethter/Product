@@ -14,21 +14,51 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - GTSDK (2.3.1.0)
+  - LBXScan/LBXNative (2.3):
+    - LBXScan/Types (~> 2.2)
+  - LBXScan/LBXZXing (2.3):
+    - LBXScan/Types (~> 2.2)
+  - LBXScan/Types (2.3)
+  - LBXScan/UI (2.3):
+    - LBXScan/Types (~> 2.2)
+  - Masonry (1.1.0)
   - MJExtension (3.0.15.1)
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
+  - YYKeyboardManager (1.0.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
+  - GTSDK (~> 2.3.1.0)
+  - LBXScan/LBXNative (~> 2.3)
+  - LBXScan/LBXZXing (~> 2.3)
+  - LBXScan/UI (~> 2.3)
+  - Masonry (~> 1.1.0)
   - MJExtension (~> 3.0.15.1)
+  - SDWebImage (~> 4.4.6)
+  - YYKeyboardManager (~> 1.0.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - GTSDK
+    - LBXScan
+    - Masonry
     - MJExtension
+    - SDWebImage
+    - YYKeyboardManager
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  GTSDK: 494ef4408b38bb637d6020068aac7f26cbe9d82e
+  LBXScan: e51449f0832d1fe17da632af0d22adeb3cfa3543
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  YYKeyboardManager: ff53d2e80d1808567a7f004028bd200d9469a89f
 
-PODFILE CHECKSUM: 9ce7260d6fcbe81f066cd220b109d5edf9b54c91
+PODFILE CHECKSUM: 11aa961979d8968090239ff36a9efe130f9d8565
 
 COCOAPODS: 1.6.1

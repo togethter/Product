@@ -63,6 +63,9 @@ NSString *const isModelArray = @"isModelArray";
           [super setValue:model forKey:key];
         }
       }
+    } else {
+      // 不是模型中的模型
+      [super setValue:value forKey:key];
     }
   } else {
      // 不是模型中的模型

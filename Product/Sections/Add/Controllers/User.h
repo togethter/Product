@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *icon;
 @property (assign, nonatomic) NSUInteger age;
+@property (nonatomic, assign) unsigned long long  childrens;
+@property (nonatomic, assign) unsigned int mather ;
 @property (assign, nonatomic) CGFloat height;
 @property (strong, nonatomic) NSNumber *money;
 @property (assign, nonatomic) Sex sex;
