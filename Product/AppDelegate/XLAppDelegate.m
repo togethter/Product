@@ -10,7 +10,8 @@
 #import "DateViewController.h"
 #import "LocationViewController.h"
 #import "ConcreteProxy.h"
-#import "TalkViewController.h"s
+#import "TalkViewController.h"
+#import "NHBaseNavigationController.h"
 @implementation XLAppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -30,7 +31,7 @@
     [proxy helloWorld];
     [proxy goodBye];
     TalkViewController *VC = [[TalkViewController alloc] init];
-    UINavigationController *navc = [[UINavigationController alloc] initWithRootViewController:VC];
+    NHBaseNavigationController *navc = [[NHBaseNavigationController alloc] initWithRootViewController:VC];
     self.window.rootViewController = navc;
     return YES;
 }

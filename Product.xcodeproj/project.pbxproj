@@ -37,6 +37,7 @@
 		4A9A36892260765100D58920 /* MJExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A36882260765100D58920 /* MJExtensionViewController.m */; };
 		4A9A368C2260767100D58920 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A368B2260767100D58920 /* User.m */; };
 		4AFB3FC12269D23500F0007C /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFB3FC02269D23500F0007C /* NSString+Extension.m */; };
+		60F6370522E154C4004488FB /* NHBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F6370422E154C4004488FB /* NHBaseNavigationController.m */; };
 		C52093CE21B029CB007F978E /* ScrollowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C52093CD21B029CB007F978E /* ScrollowManager.m */; };
 		C52CFCB721B2949E000D6733 /* ScrollowConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C52CFCB621B2949E000D6733 /* ScrollowConfig.m */; };
 		C5423B79217C7D4800B178D6 /* CityAndLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5423B75217C7D4800B178D6 /* CityAndLocationManager.m */; };
@@ -193,6 +194,8 @@
 		4A9A368B2260767100D58920 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		4AFB3FBF2269D23500F0007C /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		4AFB3FC02269D23500F0007C /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		60F6370322E154C4004488FB /* NHBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHBaseNavigationController.h; sourceTree = "<group>"; };
+		60F6370422E154C4004488FB /* NHBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHBaseNavigationController.m; sourceTree = "<group>"; };
 		6491C1D4B6F386AA0E3E068B /* libPods-Product.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Product.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C496B489D2C2D2A24BC92472 /* Pods-Product.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Product.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Product/Pods-Product.debug.xcconfig"; sourceTree = "<group>"; };
 		C52093CC21B029CB007F978E /* ScrollowManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollowManager.h; sourceTree = "<group>"; };
@@ -558,6 +561,15 @@
 				4A1FA81A228BE2CC00F1B097 /* BaseViewController.m */,
 			);
 			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		60F6370222E1549C004488FB /* BaseNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				60F6370322E154C4004488FB /* NHBaseNavigationController.h */,
+				60F6370422E154C4004488FB /* NHBaseNavigationController.m */,
+			);
+			name = BaseNavigationController;
 			sourceTree = "<group>";
 		};
 		C52093CB21B029B4007F978E /* ScrollowManager */ = {
@@ -1020,6 +1032,7 @@
 		C5C25D0D217B1B7400F6673A /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				60F6370222E1549C004488FB /* BaseNavigationController */,
 				4A1FA818228BE29600F1B097 /* BaseViewController */,
 				C5423B88217C816000B178D6 /* BaseModel */,
 				C5C25D0E217B1B9600F6673A /* TableView */,
@@ -1345,6 +1358,7 @@
 				C5D1CA692180C044002714CA /* ScaleAnimationView.m in Sources */,
 				C58298922179E7BC00E9EB56 /* UIButton+XLExtension.m in Sources */,
 				4A0B4EB02275B61D002F3D16 /* LBXPermissionReminders.m in Sources */,
+				60F6370522E154C4004488FB /* NHBaseNavigationController.m in Sources */,
 				C5423B86217C7FCE00B178D6 /* LoginUserModel.m in Sources */,
 				4A9A36892260765100D58920 /* MJExtensionViewController.m in Sources */,
 				C5F74B1D2185DBB100A19124 /* ConcreteProxy.m in Sources */,

@@ -51,6 +51,7 @@
     [cardView loadData:modelAdapter];
     
     [self.view addSubview:cardView];
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 /*

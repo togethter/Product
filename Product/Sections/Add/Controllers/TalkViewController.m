@@ -9,6 +9,7 @@
 #import "TalkViewController.h"
 #import "Masonry.h"
 #import "UIImageView+WebCache.h"
+#import "AdapterViewController.h"
 @interface TalkViewController ()
 
 @property (nonatomic, strong) UIView* topView;
@@ -23,7 +24,7 @@
     // Do any additional setup after loading the view from its nib.
 //  http://test.clientconfig.ispeak.cn/dbapi/package/2.20001mtips.gif
   self.imageView = [[UIImageView alloc] init];
-  
+  self.view.backgroundColor = [UIColor whiteColor];
   [self.imageView sd_setImageWithURL:[NSURL URLWithString:@"http://test.clientconfig.ispeak.cn/dbapi/package/2.20001mtips.gif"]];
 
 
@@ -60,10 +61,24 @@
   }];
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    
+    
+    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [addBtn addTarget:self action:@selector(pushAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addBtn];
+    [addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.view);
+    }];
 }
 
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+- (void)pushAction:(UIButton *)btn {
+    AdapterViewController *vc = [[AdapterViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)orientationDidChange:(NSNotification *)center  {
   switch ([UIDevice currentDevice].orientation) {
