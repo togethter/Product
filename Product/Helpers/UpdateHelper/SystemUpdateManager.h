@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XLAppDelegate.h"
+#import "AppDelegate.h"
 @interface SystemUpdateManager : NSObject
-+ (void)showVersionWith:(XLAppDelegate *)delegate;
++ (void)showVersionWith:(AppDelegate *)delegate;
 @end

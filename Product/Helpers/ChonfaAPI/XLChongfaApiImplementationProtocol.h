@@ -17,7 +17,7 @@
 
  @param responde 崇法下棋传递过来的参数
  */
-+ (void)XLChongfaApiImplementationEchongFaTypeOtherOperationResponde:(id<ChongFaApiModelProtocol>)responde withAppDelegate:(XLAppDelegate *)delegate;
++ (void)XLChongfaApiImplementationEchongFaTypeOtherOperationResponde:(id<ChongFaApiModelProtocol>)responde withAppDelegate:(AppDelegate *)delegate;
 
 
 

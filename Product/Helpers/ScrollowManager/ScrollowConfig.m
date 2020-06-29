@@ -14,14 +14,18 @@
     if (!self) {
         return nil;
     }
-    self.leftRightMargin = 15.f;
-    self.margin = 15.f;
-    self.titleScrollowH = 45.f;
-    self.normalTitleColor = [UIColor darkGrayColor];
-    self.selctTitleColor = [UIColor redColor];
-    self._lineViewColor = [UIColor redColor];
-    self._lineView_bottom = 5.f;
-    self.font = [UIFont systemFontOfSize:17];
+    self.leftRightMargin = 15;
+    self.margin = 15;
+    self.titleScrollowH = 15;
+    self.normalTitleColor = rgb(28, 28, 28);
+    self.selctTitleColor = rgb(28, 28, 28);
+    self._lineViewColor = rgb(28, 28, 28);
+    self._lineView_bottom = 8;
+    self.normalFont =  [UIFont fontWithName:@"PingFangSC-Medium" size:(13)];
+    self.selectFont = [UIFont fontWithName:@"PingFangSC-Semibold" size:(13)];
+    self.lineViewWidth = (45);
+    self.lineViewHeight = (2);
+    self.choiceIndex = 0;
     return self;
 }
 @end

@@ -9,7 +9,6 @@
 #import "LocationViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "ScrollowManager.h"
-#import "DateViewController.h"
 @interface LocationViewController ()<CLLocationManagerDelegate>
 @property (nonatomic,strong) CLLocationManager *locationManger;
 
@@ -21,27 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.translucent = NO;
-    ScrollowManager *scrol = [ScrollowManager scrollManagerWithContentView:self.view withParentController:self withConfi:[ScrollowConfig new]];
-    DateViewController *vc1 = [[DateViewController alloc] init];
-    DateViewController *vc2 = [[DateViewController alloc] init];
-    DateViewController *vc3 = [[DateViewController alloc] init];
-    DateViewController *vc4 = [[DateViewController alloc] init];
-    DateViewController *vc5 = [[DateViewController alloc] init];
-    DateViewController *vc6 = [[DateViewController alloc] init];
-    DateViewController *vc7 = [[DateViewController alloc] init];
-    DateViewController *vc8 = [[DateViewController alloc] init];
-
-    [scrol addChilder:vc1 title:@"逗比比"];
-    [scrol addChilder:vc2 title:@"逗比"];
-    [scrol addChilder:vc3 title:@"逗比"];
-    [scrol addChilder:vc4 title:@"逗比"];
-    [scrol addChilder:vc5 title:@"比比比比"];
-    [scrol addChilder:vc6 title:@"逗比"];
-    [scrol addChilder:vc7 title:@"逗比"];
-    [scrol addChilder:vc8 title:@"逗比比比比比比比比比"];
-
-    [scrol show];
     return;
     self.label = [UILabel new];
     [self.view addSubview:self.label];

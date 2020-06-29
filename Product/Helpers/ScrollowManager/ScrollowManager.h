@@ -13,18 +13,48 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface ScrollowManager : UIView
 
-+ (instancetype)
-scrollManagerWithContentView:(UIView*)contentView
-        withParentController:(UIViewController*)parentViewController
-                   withConfi:(ScrollowConfig*)config;  // 指定初始化方法
-- (void)addChilder:(UIViewController*)childerViewController
-             title:(NSString*)title;  // 添加自试图控制器
+/**
+ 指定初始化方法
 
+ @param contentView 父试图
+ @param parentViewController 父试图控制器
+ @param config 配置对象
+ @return 分段管理器
+ */
++ (instancetype)scrollManagerWithContentView:(UIView*)contentView
+        withParentController:(UIViewController*)parentViewController
+                   withConfi:(ScrollowConfig*)config;
+/**
+ 添加子控制器
+
+ @param childerViewController 子控制器
+ @param title 分段标题
+ */
+- (void)addChilder:(UIViewController*)childerViewController
+             title:(NSString*)title;
+/**
+添加子控制器
+
+ @param childerViewControllerArray 控制器数组
+ @param titleArray 分段标题数组
+ */
+- (void)addChilders:(NSArray *)childerViewControllerArray titles:(NSArray *)titleArray;
+/**
+ 初始化方法
+ */
 - (instancetype (^)(UIView* contentView, UIViewController* parentViewController,
-                    ScrollowConfig* config))parentViewController;  // 配置父试图
+                    ScrollowConfig* config))parentViewController;
+/**
+ 添加子控制器
+ */
 - (instancetype (^)(UIViewController* vc,
-                    NSString* title))addChildren;  // 添加子试图控制器
-- (void)show;  //展示
+                    NSString* title))addChildren;
+/**
+ 展示控件
+ */
+- (void)show;
+/** 滑动到第几个下表*/
+- (void)scrowIndex:(NSInteger)scrowIndex;
 
 @end
 

@@ -18,14 +18,14 @@
 //其中在versionDicArr 中每一个版本的数组中最后一位有一个标识符位改标志服非空（YES）或者（NO）—————YES 表示强制更新， NO —— 表示不强制跟新
 //如果选择0的话， 返回的数据中最后一位是YES， （改版本）表示强制跟新， 返回的是NO的话 （改版本）表示不强制跟新
 //选择1的话， 所有版本都要强制更新
-+ (void)showVersionWith:(XLAppDelegate *)delegate{
++ (void)showVersionWith:(AppDelegate *)delegate{
     
     [self customshowVersionWith:delegate];
 }
 
 
 // 新的版本升级
-+ (void)customshowVersionWith:(XLAppDelegate *)delegate{
++ (void)customshowVersionWith:(AppDelegate *)delegate{
 //
 //    [[YXHTTPRequst shareInstance] networking:@"http://api.chongfa.cn/v8/app/updateConfigIos" parameters:nil method:YXRequstMethodTypePOST success:^(NSDictionary *obj) {
 //        DLog(@"%@", obj);
@@ -75,7 +75,7 @@
 
 
 // 版本更新
-+ (void)VersionButton:(XLAppDelegate *)delegate
++ (void)VersionButton:(AppDelegate *)delegate
 {
 //    [[YXHTTPRequst shareInstance] networking:@"http://itunes.apple.com/lookup?id=1121257704" parameters:nil method:YXRequstMethodTypePOST success:^(NSDictionary *dic) {
 //        //        NSLog(@"%@", dic);
@@ -102,7 +102,7 @@
 
 
 #pragma mark ---- 比较当前版本与最新上线版本作比较
-+ (void)checkAppUpdate:(NSString *)appInfo appDelegate:(XLAppDelegate *)delegate
++ (void)checkAppUpdate:(NSString *)appInfo appDelegate:(AppDelegate *)delegate
 {
     // 获取当前版本
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];

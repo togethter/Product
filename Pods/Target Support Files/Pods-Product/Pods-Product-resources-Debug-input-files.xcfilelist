@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-Product/Pods-Product-resources.sh
+${PODS_ROOT}/BRPickerView/BRPickerView/Base/BRPickerView.bundle
+${PODS_ROOT}/LBXScan/LBXScan/UI/CodeScan.bundle
+${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle
+${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle

@@ -14,6 +14,11 @@
 //#endif /* PrefixHeader_pch */
 
 //----------------------ABOUT SCREEN & SIZE 屏幕&尺寸 ----------------------------
+
+
+
+#define kIS_VALID_STRING(string) (string && [string isKindOfClass:[NSString class]] && [string length] > 0)
+
 /**
  iPad Air {{0, 0}, {768, 1024}}
  iphone4s {{0, 0}, {320, 480}}     960*640

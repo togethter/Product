@@ -11,6 +11,6 @@
 #import "ChongFaApiProtocol.h"
 @interface XLChongFaApiCenter : NSObject
 
-+ (void)chongFaApiCenterAction:(EchongFaToDo)chongfaTodo onResponde:(id <ChongFaApiModelProtocol>)responde withDelegate:(XLAppDelegate *)delegate;
++ (void)chongFaApiCenterAction:(EchongFaToDo)chongfaTodo onResponde:(id <ChongFaApiModelProtocol>)responde withDelegate:(AppDelegate *)delegate;
 
 @end

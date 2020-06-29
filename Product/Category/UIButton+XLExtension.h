@@ -36,7 +36,8 @@ typedef NS_ENUM(NSInteger,LLButtonStyle) {
                  normalImage:(UIImage *)normalImage
               highlightImage:(nullable UIImage *)highlightImage
                        title:(nullable NSString *)title
-                        font:(nullable UIFont *)font
+                        font:(CGFloat)font
+                    fontName:(NSString *)fontName
                  buttonBlock:(void(^)(UIButton *_Nullable))buttonBlock;
 
 
@@ -47,6 +48,7 @@ typedef NS_ENUM(NSInteger,LLButtonStyle) {
  @param normalImage 正常图片
  @param highlightImage 高亮图片
  @param title title
+ @param fontName 字体名称
  @param font 字体大小
  @param normalBackgroundImage 正常背景颜色
  @param highlightBackgroundImage 高亮的背景颜色
@@ -55,11 +57,12 @@ typedef NS_ENUM(NSInteger,LLButtonStyle) {
  */
 + (UIButton *)buttonWithType:(UIButtonType)buttonType
                  normalImage:(UIImage *)normalImage
-              highlightImage:(nullable UIImage *)highlightImage
-                       title:(nullable NSString *)title
-                        font:(nullable UIFont *)font
-       normalBackgroundImage:(nullable UIImage *)normalBackgroundImage
-    highlightBackgroundImage:(nullable UIImage *)highlightBackgroundImage
+              highlightImage:(UIImage *)highlightImage
+                       title:(NSString *)title
+                    fontName:(NSString *)fontName
+                        font:(CGFloat)font
+       normalBackgroundImage:(UIImage *)normalBackgroundImage
+    highlightBackgroundImage:(UIImage *)highlightBackgroundImage
                  buttonBlock:(void (^)(UIButton * _Nullable))buttonBlock;
 
 

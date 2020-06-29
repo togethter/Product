@@ -9,7 +9,7 @@
 #import "XLChongFaApiCenter.h"
 #import "XLChongfaApiImplementaionOne.h"
 @implementation XLChongFaApiCenter
-+ (void)chongFaApiCenterAction:(EchongFaToDo)chongfaTodo onResponde:(id <ChongFaApiModelProtocol>)responde withDelegate:(XLAppDelegate *)delegate
++ (void)chongFaApiCenterAction:(EchongFaToDo)chongfaTodo onResponde:(id <ChongFaApiModelProtocol>)responde withDelegate:(AppDelegate *)delegate
 {
     switch (chongfaTodo) {
        

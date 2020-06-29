@@ -14,7 +14,7 @@
 @implementation XLChongfaApiImplementaionOne
 
 
-+ (void)XLChongfaApiImplementationEchongFaTypeOtherOperationResponde:(id<ChongFaApiModelProtocol>)responde withAppDelegate:(XLAppDelegate *)delegate
++ (void)XLChongfaApiImplementationEchongFaTypeOtherOperationResponde:(id<ChongFaApiModelProtocol>)responde withAppDelegate:(AppDelegate *)delegate
 {
 //    if ([self islogin]) {// 登录了
 //        if ([USERTYPE isEqualToString:@"1"]) {// 用户

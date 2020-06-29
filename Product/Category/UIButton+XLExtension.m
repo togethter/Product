@@ -17,8 +17,9 @@
                  normalImage:(UIImage *)normalImage
               highlightImage:(nullable UIImage *)highlightImage
                        title:(nullable NSString *)title
-                        font:(nullable UIFont *)font
-                 buttonBlock:(void(^)(UIButton *))buttonBlock
+                        font:(CGFloat)font
+                    fontName:(NSString *)fontName
+                 buttonBlock:(void(^)(UIButton *_Nullable))buttonBlock
 {
     UIButton *button = [[self class] buttonWithType:buttonType];
     [button setImage:normalImage forState:UIControlStateNormal];
@@ -29,8 +30,8 @@
     if (title && [title isKindOfClass:[NSString class]] && title.length) {
         [button setTitle:title forState:UIControlStateNormal];
     }
-    if (font) {
-        button.titleLabel.font = font;
+    if (font >0) {
+        button.titleLabel.font = [UIFont systemFontOfSize:font];
     }
     return button;
 }
@@ -39,12 +40,13 @@
                  normalImage:(UIImage *)normalImage
               highlightImage:(UIImage *)highlightImage
                        title:(NSString *)title
-                        font:(UIFont *)font
+                    fontName:(NSString *)fontName
+                        font:(CGFloat)font
        normalBackgroundImage:(UIImage *)normalBackgroundImage
     highlightBackgroundImage:(UIImage *)highlightBackgroundImage
                  buttonBlock:(void (^)(UIButton * _Nullable))buttonBlock
 {
-    UIButton *button = [[self class] buttonWithType:buttonType normalImage:normalImage highlightImage:highlightImage title:title font:font buttonBlock:buttonBlock];
+    UIButton *button = [[self class] buttonWithType:buttonType normalImage:normalImage highlightImage:highlightImage title:title font:font fontName:fontName buttonBlock:buttonBlock];
     if (normalBackgroundImage) {
         [button setBackgroundImage:normalBackgroundImage forState:UIControlStateNormal];
     }

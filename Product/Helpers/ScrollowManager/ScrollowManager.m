@@ -36,10 +36,17 @@
     return _oldBtnArray;
 }
 
-
+- (void)addChilders:(NSArray *)childerViewControllerArray titles:(NSArray *)titleArray {
+    for (int i = 0; i < childerViewControllerArray.count; i++) {
+        [self addChilder:childerViewControllerArray[i] title:titleArray[i]];
+    }
+}
 + (instancetype)scrollManagerWithContentView:(UIView *)contentView withParentController:(UIViewController *)parentViewController  withConfi:(nonnull ScrollowConfig *)config{
     ScrollowManager *view = [[ScrollowManager alloc] initWithFrame:contentView.frame];
     [contentView addSubview:view];
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(contentView);
+    }];
     view.confi = config;
     view.contentView = contentView;
     view.parentVC = parentViewController;
@@ -67,8 +74,10 @@
     return ^ScrollowManager *(UIViewController *vc,NSString *title) {
         [self.parentVC addChildViewController:vc];
         if (!self.titleArray) {
-            [self.titleArray addObject:title];
+            self.titleArray = [NSMutableArray array];
         }
+        [self.titleArray addObject:title];
+
         return self;
     };
 }
@@ -79,6 +88,10 @@
     [self titleScrollowView];
     // 创建contentScrollowView
     [self contentScrollowView];
+    self.titleScrollow.showsVerticalScrollIndicator = NO;
+    self.titleScrollow.showsHorizontalScrollIndicator = NO;
+    self.contentScrollow.showsVerticalScrollIndicator = NO;
+    self.contentScrollow.showsHorizontalScrollIndicator = NO;
     
 }
 
@@ -88,15 +101,15 @@
     UIScrollView *scrollow = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.contentView.frame), self.confi.titleScrollowH)];
     scrollow.bounces  = NO;
     self.titleScrollow = scrollow;
-    static UIButton *oldBtn = nil;
+    UIButton *oldBtn = nil;
     UIButton *newBtn = nil;
     for (int i = 0; i < self.titleArray.count; i++) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setTitle:_titleArray[i] forState:UIControlStateNormal];
         [btn setTitleColor:self.confi.normalTitleColor forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(senderBtn:) forControlEvents:UIControlEventTouchUpInside];
         btn.tag = 1000 + i;
-        btn.titleLabel.font = self.confi.font;
+        btn.titleLabel.font = (self.confi.choiceIndex == i)? self.confi.selectFont : self.confi.normalFont;
         [btn sizeToFit];
         CGFloat const btnW = btn.frame.size.width;
         UIButton *lastBtn = self.oldBtnArray.lastObject;// 最后一个btn
@@ -122,8 +135,9 @@
     UIButton *btn = self.oldBtnArray.firstObject;
     self.oldBtn = btn;
     [self.oldBtn setTitleColor:self.confi.selctTitleColor forState:UIControlStateNormal];
-    CGFloat oldBtnW = CGRectGetWidth(btn.frame);
-    lineView.frame = CGRectMake(0, self.confi.titleScrollowH - self.confi._lineView_bottom, oldBtnW * 0.4, 2);
+    self.oldBtn.titleLabel.font = self.confi.selectFont;
+    lineView.frame = CGRectMake(0, self.confi.titleScrollowH - self.confi._lineView_bottom,
+                                self.confi.lineViewWidth, self.confi.lineViewHeight);
     CGPoint point = lineView.center;
     point.x = btn.center.x;
     lineView.center = point;
@@ -133,19 +147,43 @@
     totoalBtnContentWidth = CGRectGetMaxX(((UIButton *)self.oldBtnArray.lastObject).frame) + self.confi.leftRightMargin;
     scrollow.contentSize = CGSizeMake(totoalBtnContentWidth , 0);
     [self addSubview:self.titleScrollow];
+    if (self.confi.topViweBackgroundColor) {
+        self.titleScrollow.backgroundColor = self.confi.topViweBackgroundColor;
+    }
 }
 // 创建contentScrollow
 - (void)contentScrollowView {
     UIScrollView *contentScrollow = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleScrollow.frame), CGRectGetWidth(self.contentView.frame),CGRectGetHeight(self.contentView.frame) - self.confi.titleScrollowH)];
     contentScrollow.bounces = NO;
     self.contentScrollow = contentScrollow;
-    UIViewController *vc = self.parentVC.childViewControllers.firstObject;
-    vc.view.frame = CGRectMake(0, 0, CGRectGetWidth(contentScrollow.frame), CGRectGetHeight(self.contentScrollow.frame) - self.confi.titleScrollowH);
-    [contentScrollow addSubview:vc.view];
+    [self addSubview:contentScrollow];
+    [contentScrollow mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.titleScrollow.mas_bottom);
+        make.left.right.bottom.mas_equalTo(self);
+    }];
+    UIView *view = [[UIView alloc] init];
+    [contentScrollow addSubview:view];
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(contentScrollow);
+        make.width.mas_equalTo(contentScrollow).multipliedBy(self.parentVC.childViewControllers.count);
+        make.height.mas_equalTo(contentScrollow);
+    }];
+    if (self.confi.choiceIndex == 0) {
+        UIViewController *vc = self.parentVC.childViewControllers.firstObject;
+        vc.view.frame = CGRectMake(0, 0, CGRectGetWidth(contentScrollow.frame), CGRectGetHeight(self.contentScrollow.frame) - self.confi.titleScrollowH);
+        [contentScrollow addSubview:vc.view];
+        [vc.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.contentScrollow.mas_top);
+            make.left.mas_equalTo(self.contentScrollow.mas_left);
+            make.width.mas_equalTo(CGRectGetWidth(contentScrollow.frame));
+            make.bottom.mas_equalTo(self.contentScrollow.mas_bottom);
+        }];
+    }
     self.contentScrollow.contentSize = CGSizeMake(self.parentVC.childViewControllers.count *  1.0f *CGRectGetWidth(contentScrollow.frame), 0);
     contentScrollow.delegate = self;
     contentScrollow.pagingEnabled = YES;
-    [self addSubview:contentScrollow];
+    [contentScrollow setContentOffset:CGPointMake(CGRectGetWidth(contentScrollow.frame) * self.confi.choiceIndex, 0) animated:YES];
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -154,6 +192,18 @@
     CGFloat offset = scrollView.contentOffset.x;
     NSInteger index =  offset / CGRectGetWidth(self.contentScrollow.frame);
     CGFloat  rare = offset / CGRectGetWidth(self.contentScrollow.frame) - index;
+    if (self.oldAndNewBtnDistance.count  == index && self.oldBtnArray.count >index ) {
+        UIButton *btn = self.oldBtnArray[index];
+        CGFloat width = [self.oldAndNewBtnDistance[index - 1] floatValue] * rare;
+        CGPoint center = btn.center;
+        __weak typeof(self)weakSelf = self;
+        CGPoint lineViewcenter = self.lineView.center;
+        lineViewcenter.x = center.x + width;
+        [UIView animateWithDuration:0.25 animations:^{
+            weakSelf.lineView.center = lineViewcenter;
+        }];
+        return;
+    }
     if (self.oldBtnArray.count >index && self.oldAndNewBtnDistance.count > index) {
         UIButton *btn = self.oldBtnArray[index];
         CGFloat width = [self.oldAndNewBtnDistance[index] floatValue] * rare;
@@ -175,6 +225,18 @@
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     [self findControllerWithScrollow:scrollView];
 }
+- (void)buttonSizeFit:(NSArray *)buttonArray {
+    for (UIButton *button in buttonArray) {
+        CGFloat h = button.height;
+        CGFloat centerX = button.centerX;
+        [button sizeToFit];
+        CGFloat w = button.width;
+        button.centerX = centerX;
+        button.height = h;
+        button.width = w;
+    }
+}
+
 - (void)senderBtn:(UIButton *)sender {
     NSInteger index = sender.tag - 1000;
     [self.contentScrollow setContentOffset:CGPointMake(index *CGRectGetWidth(self.contentScrollow.frame), 0) animated:NO];
@@ -183,13 +245,24 @@
     if (![self.contentScrollow.subviews containsObject:vc.view]) {
         vc.view.frame = CGRectMake(index * CGRectGetWidth(self.contentScrollow.frame), 0, CGRectGetWidth(self.contentScrollow.frame),  CGRectGetHeight(self.contentScrollow.frame));
         [self.contentScrollow addSubview:vc.view];
+        [vc.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.contentScrollow.mas_left).offset(index * CGRectGetWidth(self.contentScrollow.frame));
+            make.top.mas_equalTo(self.contentScrollow.mas_top);
+            make.width.mas_equalTo(CGRectGetWidth(self.contentScrollow.frame));
+            make.bottom.mas_equalTo(self.contentScrollow.mas_bottom);
+        }];
     }
     if (self.oldBtn != sender) {
         [self.oldBtn setTitleColor:self.confi.normalTitleColor forState:UIControlStateNormal];
+        self.oldBtn.titleLabel.font = self.confi.normalFont;
         [sender setTitleColor:self.confi.selctTitleColor forState:UIControlStateNormal];
+        sender.titleLabel.font = self.confi.selectFont;
+        [self buttonSizeFit:@[sender,self.oldBtn]];
         [self changCenter:sender];
     } else {
         [self.oldBtn setTitleColor:self.confi.selctTitleColor forState:UIControlStateNormal];
+        self.oldBtn.titleLabel.font = self.confi.selectFont;
+        [self buttonSizeFit:@[self.oldBtn]];
     }
     CGPoint lineViewCenter = self.lineView.center;
     lineViewCenter.x  = sender.center.x;
@@ -210,15 +283,27 @@
     NSInteger oldIndex = [self.oldBtnArray indexOfObject:self.oldBtn];
     if (oldIndex != index) {
         [self.oldBtn setTitleColor:self.confi.normalTitleColor forState:UIControlStateNormal];
+        self.oldBtn.titleLabel.font = self.confi.normalFont;
         UIButton *newBtn = self.oldBtnArray[index];
         [newBtn setTitleColor:self.confi.selctTitleColor forState:UIControlStateNormal];
+        newBtn.titleLabel.font = self.confi.selectFont;
+        [self buttonSizeFit:@[newBtn,self.oldBtn]];
         [self changCenter:newBtn];
     } else {
         [self.oldBtn setTitleColor:self.confi.selctTitleColor forState:UIControlStateNormal];
+        self.oldBtn.titleLabel.font = self.confi.selectFont;
+        [self buttonSizeFit:@[self.oldBtn]];
     }
     if (![self.contentScrollow.subviews containsObject:vc.view]) {
         vc.view.frame = CGRectMake(index * CGRectGetWidth(self.contentScrollow.frame), 0, CGRectGetWidth(self.contentScrollow.frame),  CGRectGetHeight(self.contentScrollow.frame));
         [self.contentScrollow addSubview:vc.view];
+        
+        [vc.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(index * CGRectGetWidth(self.contentScrollow.frame));
+            make.top.mas_equalTo(0);
+            make.width.mas_equalTo(CGRectGetWidth(self.contentScrollow.frame));
+            make.bottom.mas_equalTo(self.contentScrollow.mas_bottom);
+        }];
     }
         self.oldBtn = self.oldBtnArray[index];
 }
@@ -238,6 +323,18 @@
         // 设置为最大
         offset = maxOffset;
     }
+    if (maxOffset < 0) {
+        offset = 0;
+    }
     [self.titleScrollow setContentOffset:CGPointMake(offset, 0) animated:YES];
+    
+}
+
+- (void)scrowIndex:(NSInteger)scrowIndex {
+    [self.contentScrollow setContentOffset:CGPointMake(CGRectGetWidth(self.contentScrollow.frame) * scrowIndex, 0) animated:YES];
+
+}
+- (void)dealloc {
+    DLog(@"%@",NSStringFromClass(self.class));
 }
 @end
