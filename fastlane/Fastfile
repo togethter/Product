@@ -34,6 +34,6 @@ platform :ios do
       output_directory:"./fastlane/build",
     ) 
 #使用fir-cli上传ipa
-    sh "fir publish /Users/lixueliang/Desktop/lxl/本地/demo/Product/fastlane/build/Product.ipa -T 3b0eb703462f81f0348ac58c91b171d7"
+    sh "fir publish ./fastlane/build/Product.ipa -T 3b0eb703462f81f0348ac58c91b171d7"
   end	
 end
