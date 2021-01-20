@@ -19,7 +19,8 @@ platform :ios do
     branch = options[:branch]
     build_no = get_version_number + '.' + Time.new.strftime("%m%d%H%M")
     puts "Begin to run ci"
-
+    sh "pwd" # => "[root]/fastlane"
+    puts Dir.pwd # => "[root]/fastlane"
    #确认分支、git状态、拉取最新代码
     sh "git checkout #{branch}"
     ensure_git_branch(branch: branch)
