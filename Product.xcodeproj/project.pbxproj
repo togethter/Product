@@ -941,7 +941,6 @@
 				C58298832179E5D200E9EB56 /* Helpers */,
 				C58298842179E5D200E9EB56 /* Macroes */,
 				C58298762179E5D200E9EB56 /* Sections */,
-				C58298752179E5D100E9EB56 /* Vendors */,
 				C58298892179E77E00E9EB56 /* Category */,
 				C58298612179E49100E9EB56 /* Main.storyboard */,
 				C58298642179E49300E9EB56 /* Assets.xcassets */,
@@ -959,13 +958,6 @@
 				C58298862179E6EA00E9EB56 /* AppDelegate.m */,
 			);
 			path = AppDelegate;
-			sourceTree = "<group>";
-		};
-		C58298752179E5D100E9EB56 /* Vendors */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Vendors;
 			sourceTree = "<group>";
 		};
 		C58298762179E5D200E9EB56 /* Sections */ = {
@@ -1760,6 +1752,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0.01202020;
 				DEVELOPMENT_TEAM = 8648WXQT3V;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Product/Macroes/PrefixHeader.pch";
@@ -1780,6 +1773,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0.01202020;
 				DEVELOPMENT_TEAM = 8648WXQT3V;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Product/Macroes/PrefixHeader.pch";
